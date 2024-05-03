@@ -7,7 +7,7 @@ const path = require("path");
 
 // SETUP
 // dotenv.config({ path: "/Users/Prince/Desktop/stock-trading-simulator/.env" });
-dotenv.config({ path: "/Users/Preksha Shah/Documents/SE/prince/dalvi/.env" });
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5002;
@@ -18,13 +18,13 @@ app.use(express.json());
 app.use(cookieParser("secretcode"));
 
 // DATABASE
-const DB = process.env.MONGO_URI.replace(
-  "",
-  process.env.MONGO_PASSWORD
-);
+// const DB = process.env.MONGO_URI.replace(
+//   "",
+//   process.env.MONGO_PASSWORD
+// );
 
 mongoose
-  .connect(DB, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
